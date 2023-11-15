@@ -1,0 +1,104 @@
+@keyframes pulseSpin {
+  0% {
+    transform: rotateZ(0deg) scale(0.95);
+  }
+  50% {
+    transform: rotateZ(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotateZ(360deg) scale(0.95);
+  }
+}
+
+@keyframes specialGlow {
+  0% {
+    background-color: lightgreen;
+  }
+  25% {
+    background-color: lightblue;
+  }
+  50% {
+    background-color: rgb(230, 173, 204);
+  }
+  75% {
+    background-color: lightblue;
+  }
+  100% {
+    background-color: lightgreen;
+  }
+}
+
+div .primary {
+  background-color: rgb(40, 194, 148);
+}
+
+div .secondary {
+  background-color: rgb(127, 136, 219);
+}
+
+div .tertiary {
+  background-color: rgb(93, 172, 212);
+}
+
+div .default {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  opacity: 0.95;
+  transition: 0.5s all;
+}
+
+div .default:hover {
+  cursor: pointer;
+  background-color: rgb(146, 233, 146);
+}
+
+div .special {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  opacity: 0.95;
+  transition: 0.5s all;
+}
+
+div .special:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px 1px rgb(123, 233, 185);
+  background-color: rgb(231, 160, 234);
+}
+
+div .activated {
+  cursor: pointer;
+  width: 90px;
+  height: 90px;
+  margin: 10px;
+  animation: pulseSpin infinite 1s;
+  background-color: rgb(15, 15, 15);
+  box-shadow: 0 0 6px 2px rgb(173, 230, 227);
+}
+
+div .activated:hover {
+  animation: specialGlow infinite 0.3s pulseSpin infinite 1s;
+}
+
+div.gameboard {
+  margin: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 330px;
+  height: 330px;
+}
+
+div.gameboard-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 400px;
+  background-color: black;
+}
+
+.gameboard button {
+  border: 0px;
+}

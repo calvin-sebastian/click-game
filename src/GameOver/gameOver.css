@@ -1,0 +1,72 @@
+.game-over {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 400px;
+  background-color: black;
+}
+
+.game-score {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-over h2 {
+  margin-top: 0px;
+  font-size: 80px;
+  padding-bottom: 0px;
+  color: red;
+}
+
+.game-over h4 {
+  margin: 0px;
+  margin-bottom: 15px;
+  font-size: 26px;
+  padding-bottom: 0px;
+  color: rgb(227, 227, 227);
+}
+
+.game-over button {
+  width: 130px;
+  border: 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: rgb(219, 219, 219);
+  font-size: 25px;
+}
+
+.game-over button.restart:hover {
+  background-color: rgb(179, 179, 179);
+  border: 0px;
+  box-shadow: 0 0 3px 1px rgb(34, 255, 0) inset;
+}
+
+.game-over button.quit:hover {
+  background-color: rgb(179, 179, 179);
+  border: 0px;
+  box-shadow: 0 0 3px 1px rgb(255, 0, 0) inset;
+}
+
+.game-over button.restart:active {
+  background-color: rgb(150, 150, 150);
+  box-shadow: 0 0 9px 1px rgb(34, 255, 0) inset;
+  font-size: 24.5px;
+  border: 0.5px solid black;
+}
+
+.game-over button.quit:active {
+  background-color: rgb(150, 150, 150);
+  box-shadow: 0 0 9px 1px rgb(255, 0, 0) inset;
+  font-size: 24.5px;
+  border: 0.5px solid black;
+}
+
+div.choices {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
