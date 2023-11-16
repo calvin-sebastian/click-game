@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { squares } from "./squares";
 import "./gameboard.css";
-import Alert from "../Alert/Alert";
-import { hateSpeech } from "../assets/hateSpeech";
+import Alert from "../../Alert/Alert";
+import { hateSpeech } from "../../assets/hateSpeech";
 
 export default function GameBoard({ setScore }) {
   const newSquareSet = Math.floor(Math.random() * squares.length);
@@ -30,14 +30,15 @@ export default function GameBoard({ setScore }) {
       });
       if (square.type === "special") {
         setAlert("Speed Boost!");
-        setScore((curr) => curr + 3);
+        setScore((curr) => curr + 1);
         setConsistency(10);
       } else {
         setScore((curr) => curr + 1);
       }
     } else {
-      setConsistency(0);
       setAlert(hateSpeech[newSquareSet]);
+
+      setConsistency(0);
     }
   }
 
@@ -63,9 +64,13 @@ export default function GameBoard({ setScore }) {
       setDuration(
         Math.floor(Math.random() * 250) + consistency < 2
           ? 800
+          : consistency < 3
+          ? 700
           : consistency < 4
           ? 600
           : consistency < 6
+          ? 500
+          : consistency < 8
           ? 400
           : 250
       );
@@ -88,29 +93,31 @@ export default function GameBoard({ setScore }) {
       <div className="gameboard">
         {squareSet.map((square, key) => {
           return (
-            <button
-              key={key}
-              className={` ${
-                square.type === "default"
-                  ? "default"
-                  : square.type === "special"
-                  ? "special"
-                  : square.type === "alternate"
-                  ? "alternate"
-                  : ""
-              } ${
-                square.color === "primary"
-                  ? "primary"
-                  : square.color === "secondary"
-                  ? "secondary"
-                  : square.color === "tertiary"
-                  ? "tertiary"
-                  : ""
-              } ${square.activated ? "activated" : ""}`}
-              onMouseDown={() => {
-                handleSquareClick(square);
-              }}
-            ></button>
+            <div className="box-container">
+              <button
+                key={key}
+                className={` ${
+                  square.type === "default"
+                    ? "default"
+                    : square.type === "special"
+                    ? "special"
+                    : square.type === "alternate"
+                    ? "alternate"
+                    : ""
+                } ${
+                  square.color === "primary"
+                    ? "primary"
+                    : square.color === "secondary"
+                    ? "secondary"
+                    : square.color === "tertiary"
+                    ? "tertiary"
+                    : ""
+                } ${square.activated ? "activated" : ""}`}
+                onMouseDown={() => {
+                  handleSquareClick(square);
+                }}
+              />
+            </div>
           );
         })}
       </div>

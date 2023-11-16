@@ -1,0 +1,11 @@
+.settings {
+  width: 100%;
+  height: 400px;
+  background-color: pink;
+}
+
+.setting-container {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}

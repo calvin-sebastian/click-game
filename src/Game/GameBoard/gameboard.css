@@ -41,9 +41,9 @@ div .tertiary {
 }
 
 div .default {
+  border-radius: 5px;
   width: 100px;
   height: 100px;
-  margin: 5px;
   opacity: 0.95;
   transition: 0.5s all;
 }
@@ -54,9 +54,9 @@ div .default:hover {
 }
 
 div .special {
+  border-radius: 5px;
   width: 100px;
   height: 100px;
-  margin: 5px;
   opacity: 0.95;
   transition: 0.5s all;
 }
@@ -97,6 +97,15 @@ div.gameboard-container {
   width: 500px;
   height: 400px;
   background-color: black;
+}
+
+div.box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
 }
 
 .gameboard button {

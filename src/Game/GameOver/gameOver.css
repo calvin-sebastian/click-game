@@ -1,7 +1,7 @@
 .game-over {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 500px;
   height: 400px;
@@ -9,15 +9,15 @@
 }
 
 .game-score {
-  width: 70%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .game-over h2 {
   margin-top: 0px;
   font-size: 80px;
-  padding-bottom: 0px;
+  margin-bottom: 10px;
   color: red;
 }
 
@@ -69,4 +69,10 @@ div.choices {
   display: flex;
   justify-content: space-between;
   width: 300px;
+}
+
+.score-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
