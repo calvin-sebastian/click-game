@@ -6,14 +6,29 @@ export default function GameOver({
   handleQuit,
   highScores,
   setHighScores,
+  score,
+  setName,
 }) {
+  if (score > highScores.third) {
+    setHighScores((curr) => ({
+      ...curr,
+      third: { name: name, score: score },
+    }));
+  }
+
   return (
     <div className="game-over">
       <h2>Game Over</h2>
       <div className="score-container">
         <div className="game-score">
           <h4> 1st: {highScores.first.name}</h4>
-          <h4>{highScores.first.score}</h4>
+          <h4>
+            {score < highScores.first.score ? (
+              highScores.first.score
+            ) : (
+              <input></input>
+            )}
+          </h4>
         </div>
         <div className="game-score">
           <h4>2nd: {highScores.second.name}</h4>

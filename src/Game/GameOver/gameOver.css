@@ -1,7 +1,7 @@
 .game-over {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 500px;
   height: 400px;
@@ -30,7 +30,7 @@
 }
 
 .game-over button {
-  width: 130px;
+  width: 144px;
   border: 0px;
   cursor: pointer;
   border-radius: 5px;
@@ -68,7 +68,8 @@
 div.choices {
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 326px;
+  margin-bottom: 30px;
 }
 
 .score-container {

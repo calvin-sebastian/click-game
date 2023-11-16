@@ -1,0 +1,61 @@
+.toggle-on {
+  position: relative;
+  width: 70px;
+  height: 38px;
+  border-radius: 19;
+  background-color: rgb(66, 73, 67);
+  box-shadow: 0 0 3px 1px rgb(86, 255, 86);
+  transition: all 0.15s ease-out;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.toggle-off {
+  position: relative;
+  width: 70px;
+  height: 38px;
+  border-radius: 19;
+  background-color: rgb(66, 73, 67);
+  box-shadow: 0 0 3px 1px rgb(255, 86, 86);
+  transition: all 0.15s ease-out;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.on {
+  position: absolute;
+  left: 34px;
+  top: 2px;
+  background-color: rgb(30, 180, 30);
+  box-shadow: 0 0 3px 1px inset rgb(235, 240, 235);
+  width: 32px;
+  height: 32px;
+  border-radius: 17px;
+  transition: all 0.15s ease-out;
+}
+
+.off {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  background-color: rgb(206, 16, 16);
+  box-shadow: 0 0 3px 1px inset rgb(235, 240, 235);
+  width: 32px;
+  height: 32px;
+  border-radius: 17px;
+  transition: all 0.15s ease-out;
+}

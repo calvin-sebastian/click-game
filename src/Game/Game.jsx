@@ -16,12 +16,6 @@ export default function Game({ highScores, setHighScores, setGameState }) {
   //  --------------------  Functions  --------------------  //
 
   async function handleRestart() {
-    if (score > highScores.third) {
-      setHighScores((curr) => ({
-        ...curr,
-        third: { name: name, score: score },
-      }));
-    }
     setStage(1);
     setSeconds(30);
     setScore(0);
@@ -49,6 +43,8 @@ export default function Game({ highScores, setHighScores, setGameState }) {
           handleQuit={handleQuit}
           highScores={highScores}
           setHighScores={setHighScores}
+          score={score}
+          setName={setName}
         />
       )}
     </>
