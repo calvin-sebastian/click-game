@@ -2,9 +2,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import { squares } from "./squares";
 import "./gameboard.css";
 import Alert from "../../Alert/Alert";
-import { hateSpeech } from "../../assets/hateSpeech";
+import { hateSpeech } from "../../assets/lists/hateSpeech";
+import AudioPlayer from "../../assets/components/AudioPlayer";
 
-export default function GameBoard({ setScore }) {
+export default function GameBoard({ setScore, settings }) {
   const newSquareSet = Math.floor(Math.random() * squares.length);
   const [squareSet, setSquareSet] = useState(squares[newSquareSet]);
   const [resetSwitch, setResetSwitch] = useState(false);
@@ -72,7 +73,7 @@ export default function GameBoard({ setScore }) {
           ? 500
           : consistency < 8
           ? 400
-          : 250
+          : 300
       );
     }, [duration]);
 
@@ -90,6 +91,7 @@ export default function GameBoard({ setScore }) {
   return (
     <div className="gameboard-container">
       {showAlert && <Alert alert={alert} />}
+
       <div className="gameboard">
         {squareSet.map((square, key) => {
           return (

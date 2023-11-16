@@ -32,14 +32,11 @@
 import React, { useState, useEffect } from "react";
 import "./StartMenu.css";
 import Settings from "./Settings/Settings";
+import AudioPlayer from "../assets/components/AudioPlayer";
 
-export default function StartMenu({ setGameState }) {
+export default function StartMenu({ setGameState, settings, setSettings }) {
   const [timer, setTimer] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
-  const [settings, setSettings] = useState({
-    music: false,
-    sound: false,
-  });
 
   useEffect(() => {
     let countdown;
@@ -67,7 +64,7 @@ export default function StartMenu({ setGameState }) {
         <div className="introcontainer">
           <div className="text-container">
             <div className="left-text">Click</div>
-            <div className="right-text"> boxes.</div>
+            <div className="right-text"> box.</div>
           </div>
           <div className="text-container">
             <div className="left-text">Don't</div>

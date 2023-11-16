@@ -4,7 +4,12 @@ import ScoreBoard from "./ScoreBoard/ScoreBoard";
 import GameBoard from "./GameBoard/GameBoard";
 import GameOver from "./GameOver/GameOver";
 
-export default function Game({ highScores, setHighScores, setGameState }) {
+export default function Game({
+  highScores,
+  setHighScores,
+  setGameState,
+  settings,
+}) {
   //
   //  --------------------  Variables  --------------------  //
 
@@ -36,7 +41,9 @@ export default function Game({ highScores, setHighScores, setGameState }) {
         stage={stage}
         setStage={setStage}
       />
-      {stage === 1 && <GameBoard setScore={setScore} />}
+      {stage === 1 && (
+        <GameBoard setScore={setScore} settings={settings} stage={stage} />
+      )}
       {stage === 0 && (
         <GameOver
           handleRestart={handleRestart}
