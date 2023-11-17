@@ -4,6 +4,8 @@ import "./gameboard.css";
 import Alert from "../../Alert/Alert";
 import { hateSpeech } from "../../assets/lists/hateSpeech";
 import AudioPlayer from "../../assets/components/AudioPlayer";
+import useSound from "use-sound";
+import successClick from "../../assets/audio/effects/successClick.mp3";
 
 export default function GameBoard({ setScore, settings }) {
   const newSquareSet = Math.floor(Math.random() * squares.length);
@@ -13,10 +15,14 @@ export default function GameBoard({ setScore, settings }) {
   const [consistency, setConsistency] = useState(0);
   const [alert, setAlert] = useState("Good Luck!");
   const [showAlert, setShowAlert] = useState(true);
+  const [play] = useSound(successClick);
+  console.log(settings);
 
   async function handleSquareClick(square) {
-    console.log(consistency);
     if (square?.activated) {
+      if (settings.sound) {
+        play();
+      }
       if (consistency + 1 === 3) {
         setAlert("Three in a row!");
       } else if (consistency + 1 === 5) {
@@ -90,6 +96,12 @@ export default function GameBoard({ setScore, settings }) {
 
   return (
     <div className="gameboard-container">
+      <AudioPlayer
+        hidden={true}
+        controls={false}
+        state={settings.audio}
+        settings={settings}
+      />
       {showAlert && <Alert alert={alert} />}
 
       <div className="gameboard">

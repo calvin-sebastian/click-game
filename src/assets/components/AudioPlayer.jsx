@@ -1,32 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import song from "../audio/music/chill.mp3";
 
-// const AudioPlayer = ({ state }) => {
-//   const audioFile = song;
-//   const audioRef = useRef(null);
-
-//   useEffect(() => {
-//     if (state && audioRef.current) {
-//       audioRef.current.play();
-//     }
-
-//     if (!state && audioRef.current) {
-//       audioRef.current.pause();
-//     }
-//   }, [state]);
-
-//   return (
-//     <div>
-//       <audio ref={audioRef} loop={true}>
-//         <source src={audioFile} type="audio/mp3" />
-//         Your browser does not support the audio tag.
-//       </audio>
-//     </div>
-//   );
-// };
-
-// export default AudioPlayer;
-
 const AudioPlayer = ({ consistency, state, settings }) => {
   const musicEnabled = settings.music;
   const audioFile = song;
@@ -78,7 +52,6 @@ const AudioPlayer = ({ consistency, state, settings }) => {
   }, [state]);
 
   const playAudio = () => {
-    console.log(audioContextRef, audioRef);
     audioRef.current.play();
     // if (audioContextRef.current) {
     //   const source = audioContextRef.current.createBufferSource();
@@ -100,10 +73,6 @@ const AudioPlayer = ({ consistency, state, settings }) => {
 
   const stopAudio = () => {
     audioRef.current.pause();
-    // if (audioContextRef.current) {
-    //   audioContextRef.current.close();
-    //   audioContextRef.current = null;
-    // }
   };
 
   return (
