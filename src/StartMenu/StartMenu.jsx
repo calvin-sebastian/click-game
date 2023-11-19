@@ -1,38 +1,6 @@
-// import React, { useState } from "react";
-// import "./StartMenu.css";
-
-// export default function StartMenu({ setGameState }) {
-//   const [timer, setTimer] = useState();
-//   return (
-//     <div className="start-menu">
-//       <h2>Box Clicker</h2>
-//       {timer && <div>{timer}</div>}
-//       <div className="start-ui">
-//         <div className="button-container">
-//           <button
-//             onClick={() => {
-//               setTimer(3);
-//               setTimeout(() => {
-//                 setGameState("play");
-//               }, 3000);
-//               setGameState("play");
-//             }}
-//           >
-//             Start
-//           </button>
-//         </div>
-//         <div className="button-container">
-//           <button>Options</button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
 import React, { useState, useEffect } from "react";
 import "./StartMenu.css";
 import Settings from "./Settings/Settings";
-import AudioPlayer from "../assets/components/AudioPlayer";
 
 export default function StartMenu({ setGameState, settings, setSettings }) {
   const [timer, setTimer] = useState(null);

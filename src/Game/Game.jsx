@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./game.css";
 import ScoreBoard from "./ScoreBoard/ScoreBoard";
 import GameBoard from "./GameBoard/GameBoard";
 import GameOver from "./GameOver/GameOver";
+import gameOver from "../assets/audio/effects/game-over.mp3";
+import useSound from "use-sound";
 
 export default function Game({
   highScores,
@@ -30,17 +32,27 @@ export default function Game({
     setGameState("start-menu");
   }
 
+  const [play] = useSound(gameOver);
+
+  useEffect(() => {
+    if (stage === 0 && settings.sound) {
+      play();
+    }
+  }, [stage]);
+
   //  --------------------  JSX  --------------------  //
 
   return (
     <>
-      <ScoreBoard
-        score={score}
-        seconds={seconds}
-        setSeconds={setSeconds}
-        stage={stage}
-        setStage={setStage}
-      />
+      {stage !== 0 && (
+        <ScoreBoard
+          score={score}
+          seconds={seconds}
+          setSeconds={setSeconds}
+          stage={stage}
+          setStage={setStage}
+        />
+      )}
       {stage === 1 && (
         <GameBoard setScore={setScore} settings={settings} stage={stage} />
       )}

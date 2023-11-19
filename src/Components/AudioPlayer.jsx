@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import song from "../audio/music/chill.mp3";
+import song from "../assets/audio/music/chill.mp3";
 
 const AudioPlayer = ({ consistency, state, settings }) => {
   const musicEnabled = settings.music;
@@ -43,7 +43,6 @@ const AudioPlayer = ({ consistency, state, settings }) => {
   //   }, [consistency, stage]);
 
   useEffect(() => {
-    console.log(settings.music);
     if (settings.music) {
       playAudio();
     } else {

@@ -89,7 +89,6 @@
 .start-menu h2 {
   color: white;
   font-size: 50px;
-  font-family: monospace;
   font-weight: bold;
 }
 
@@ -103,7 +102,6 @@
 }
 
 .start-menu-button {
-  font-family: monospace;
   font-weight: bold;
   font-size: 20px;
   border: 0px;

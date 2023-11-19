@@ -15,9 +15,17 @@
 
 .setting-label {
   color: white;
-  font-size: 24px;
+  font-size: 2rem;
 }
 
 .setting-toggle {
   border: 1px solid red;
+}
+
+.full-screen-button {
+  margin-top: 25px;
+}
+
+.full-screen-button:hover {
+  cursor: pointer;
 }

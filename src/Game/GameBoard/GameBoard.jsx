@@ -3,9 +3,10 @@ import { squares } from "./squares";
 import "./gameboard.css";
 import Alert from "../../Alert/Alert";
 import { hateSpeech } from "../../assets/lists/hateSpeech";
-import AudioPlayer from "../../assets/components/AudioPlayer";
+import AudioPlayer from "../../Components/AudioPlayer";
 import useSound from "use-sound";
-import successClick from "../../assets/audio/effects/successClick.mp3";
+import successClick from "../../assets/audio/effects/success2.mp3";
+import failClick from "../../assets/audio/effects/fail2.mp3";
 
 export default function GameBoard({ setScore, settings }) {
   const newSquareSet = Math.floor(Math.random() * squares.length);
@@ -15,13 +16,13 @@ export default function GameBoard({ setScore, settings }) {
   const [consistency, setConsistency] = useState(0);
   const [alert, setAlert] = useState("Good Luck!");
   const [showAlert, setShowAlert] = useState(true);
-  const [play] = useSound(successClick);
-  console.log(settings);
+  const [playSuccess] = useSound(successClick);
+  const [playMiss] = useSound(failClick);
 
   async function handleSquareClick(square) {
     if (square?.activated) {
       if (settings.sound) {
-        play();
+        playSuccess();
       }
       if (consistency + 1 === 3) {
         setAlert("Three in a row!");
@@ -43,6 +44,9 @@ export default function GameBoard({ setScore, settings }) {
         setScore((curr) => curr + 1);
       }
     } else {
+      if (settings.sound) {
+        playMiss();
+      }
       setAlert(hateSpeech[newSquareSet]);
 
       setConsistency(0);
@@ -66,8 +70,6 @@ export default function GameBoard({ setScore, settings }) {
       });
       setSquareSet(updatedSquares);
 
-      // Trigger reset switch
-      setResetSwitch((curr) => !curr);
       setDuration(
         Math.floor(Math.random() * 250) + consistency < 2
           ? 800
@@ -81,6 +83,8 @@ export default function GameBoard({ setScore, settings }) {
           ? 400
           : 300
       );
+      // Trigger reset switch
+      setResetSwitch((curr) => !curr);
     }, [duration]);
 
     return () => clearTimeout(timeoutId);
@@ -99,7 +103,7 @@ export default function GameBoard({ setScore, settings }) {
       <AudioPlayer
         hidden={true}
         controls={false}
-        state={settings.audio}
+        state={settings.music}
         settings={settings}
       />
       {showAlert && <Alert alert={alert} />}
@@ -107,9 +111,8 @@ export default function GameBoard({ setScore, settings }) {
       <div className="gameboard">
         {squareSet.map((square, key) => {
           return (
-            <div className="box-container">
+            <div key={key} className="box-container">
               <button
-                key={key}
                 className={` ${
                   square.type === "default"
                     ? "default"
