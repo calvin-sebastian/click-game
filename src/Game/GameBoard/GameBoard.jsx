@@ -41,12 +41,13 @@ export default function GameBoard({
       if (settings.sound) {
         playSuccess();
       }
+      if (consistency + 1 > 5) {
+        spinningDiv.classList.add("start-spin");
+      }
       if (consistency + 1 === 3) {
         setAlert("Three in a row!");
       } else if (consistency + 1 === 5) {
         setAlert("Five in a row!");
-      } else if (consistency + 1 > 5) {
-        spinningDiv.classList.add("start-spin");
       } else if (consistency + 1 === 10) {
         setAlert("You're Unstoppable!");
       }
@@ -59,6 +60,7 @@ export default function GameBoard({
         setAlert("Speed Boost!");
         setScore((curr) => curr + 1);
         setConsistency(10);
+        spinningDiv.classList.add("start-spin");
       } else {
         setScore((curr) => curr + 1);
       }
@@ -118,15 +120,15 @@ export default function GameBoard({
           : consistency > 9
           ? "15s"
           : consistency > 13
-          ? "20s"
+          ? "10s"
           : "0"
       );
       setDuration(
         200 +
           (consistency < 2
-            ? 800
+            ? 1000
             : consistency < 3
-            ? 700
+            ? 800
             : consistency < 4
             ? 600
             : consistency < 6
@@ -146,7 +148,7 @@ export default function GameBoard({
     <div
       style={{
         "--board-spin": boardSpin,
-        "--current-rotation": spinningDivCurrentRotation,
+        "--current-rotation": parseInt(spinningDivCurrentRotation),
       }}
       className={`gameboard-container`}
     >

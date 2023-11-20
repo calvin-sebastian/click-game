@@ -45,7 +45,7 @@ export default function Game({
 
   return (
     <>
-      <BackgroundEffect consistency={consistency} />
+      {stage !== 0 && <BackgroundEffect consistency={consistency} />}
       {stage !== 0 && (
         <ScoreBoard
           score={score}

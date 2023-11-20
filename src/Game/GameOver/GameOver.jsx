@@ -162,10 +162,20 @@ export default function GameOver({
           </div>
         )}
         <div className="choices">
-          <button className="restart" onClick={triggerQuit}>
+          <button
+            className="restart"
+            onClick={() => {
+              triggerQuit();
+            }}
+          >
             Restart
           </button>
-          <button className="quit" onClick={triggerQuit("start-menu")}>
+          <button
+            className="quit"
+            onClick={() => {
+              triggerQuit("start-menu");
+            }}
+          >
             Quit
           </button>
         </div>
