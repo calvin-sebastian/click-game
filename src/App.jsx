@@ -7,6 +7,7 @@ import FullScreenComponent from "./Components/FullScreen";
 
 function App() {
   const [gameState, setGameState] = useState("start-menu");
+
   const [highScores, setHighScores] = useState(
     JSON.parse(localStorage.getItem("Skey")) || {
       first: { name: "Gud", score: 37 },

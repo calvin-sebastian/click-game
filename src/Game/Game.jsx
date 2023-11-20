@@ -5,6 +5,7 @@ import GameBoard from "./GameBoard/GameBoard";
 import GameOver from "./GameOver/GameOver";
 import gameOver from "../assets/audio/effects/game-over.mp3";
 import useSound from "use-sound";
+import BackgroundEffect from "../Viewport/BackgroundEffect/BackgroundEffect";
 
 export default function Game({
   highScores,
@@ -15,21 +16,21 @@ export default function Game({
   //
   //  --------------------  Variables  --------------------  //
 
-  const [stage, setStage] = useState(1);
   const [seconds, setSeconds] = useState(30);
   const [score, setScore] = useState(0);
-  const [name, setName] = useState("");
+  const [consistency, setConsistency] = useState(0);
+  const [stage, setStage] = useState(1);
 
   //  --------------------  Functions  --------------------  //
 
-  async function handleRestart() {
+  async function triggerQuit(action = false) {
+    {
+      action && setGameState(action);
+    }
     setStage(1);
     setSeconds(30);
+    setConsistency(0);
     setScore(0);
-  }
-
-  function handleQuit() {
-    setGameState("start-menu");
   }
 
   const [play] = useSound(gameOver);
@@ -44,6 +45,7 @@ export default function Game({
 
   return (
     <>
+      <BackgroundEffect consistency={consistency} />
       {stage !== 0 && (
         <ScoreBoard
           score={score}
@@ -54,16 +56,20 @@ export default function Game({
         />
       )}
       {stage === 1 && (
-        <GameBoard setScore={setScore} settings={settings} stage={stage} />
+        <GameBoard
+          setScore={setScore}
+          settings={settings}
+          stage={stage}
+          consistency={consistency}
+          setConsistency={setConsistency}
+        />
       )}
       {stage === 0 && (
         <GameOver
-          handleRestart={handleRestart}
-          handleQuit={handleQuit}
+          triggerQuit={triggerQuit}
           highScores={highScores}
           setHighScores={setHighScores}
           score={score}
-          setName={setName}
         />
       )}
     </>

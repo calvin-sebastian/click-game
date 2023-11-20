@@ -2,13 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import "./gameOver.css";
 
 export default function GameOver({
-  handleRestart,
-  handleQuit,
+  triggerQuit,
   highScores,
   setHighScores,
   score,
-  name,
-  setName,
 }) {
   const [showError, setShowError] = useState(false);
 
@@ -165,10 +162,10 @@ export default function GameOver({
           </div>
         )}
         <div className="choices">
-          <button className="restart" onClick={handleRestart}>
+          <button className="restart" onClick={triggerQuit}>
             Restart
           </button>
-          <button className="quit" onClick={handleQuit}>
+          <button className="quit" onClick={triggerQuit("start-menu")}>
             Quit
           </button>
         </div>

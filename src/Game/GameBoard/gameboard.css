@@ -1,3 +1,25 @@
+@keyframes slowSpin {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes finishSpin {
+  0% {
+    transform: rotateZ(var(--current-rotation));
+  }
+  100% {
+    transform: rotateZ(+180deg);
+  }
+  100% {
+    transform: rotateZ(359deg);
+  }
+}
+
 @keyframes pulseSpin {
   0% {
     transform: rotateZ(0deg) scale(0.95);
@@ -28,6 +50,15 @@
   }
 }
 
+div .white {
+  background-color: white;
+}
+
+div .white:hover {
+  background-color: red;
+  box-shadow: 0 0 7px 2px inset black;
+}
+
 div .primary {
   background-color: rgb(40, 194, 148);
 }
@@ -45,12 +76,11 @@ div .default {
   width: 6.25rem;
   height: 6.25rem;
   opacity: 0.95;
-  transition: 0.2s all;
+  transition: 0.1s all;
 }
 
 div .default:hover {
   cursor: pointer;
-  background-color: rgb(146, 233, 146);
 }
 
 div .special {
@@ -58,7 +88,7 @@ div .special {
   width: 6.25rem;
   height: 6.25rem;
   opacity: 0.95;
-  transition: 0.2s all;
+  transition: 0.1s all;
 }
 
 div .special:hover {
@@ -67,18 +97,26 @@ div .special:hover {
   background-color: rgb(231, 160, 234);
 }
 
+button.time {
+  border-radius: 0.3125rem;
+  width: 6.25rem;
+  height: 6.25rem;
+  opacity: 0.95;
+  transition: 0.1s all;
+  animation: specialGlow 1s infinite;
+}
+
 div .activated {
   cursor: pointer;
   width: 5.625rem;
   height: 5.625rem;
   margin: 0.625rem;
-  animation: pulseSpin 1s ease-out;
-  background-color: rgb(15, 15, 15);
+  animation: pulseSpin 1.2s linear;
   box-shadow: 0 0 6px 2px rgb(173, 230, 227);
 }
 
 div .activated:hover {
-  animation: specialGlow infinite 0.3s pulseSpin infinite 1s;
+  box-shadow: 0 0 9px 3px rgb(202, 245, 243);
 }
 
 div.gameboard {
@@ -94,8 +132,20 @@ div.gameboard-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 25rem;
-  background-color: black;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 15rem;
+}
+
+.start-spin {
+  transition: transform 1s ease-out;
+  --board-spin: 20s;
+  animation: slowSpin var(--board-spin) infinite linear;
+}
+
+.stop-spin {
+  transition: transform 1s ease-out;
+  animation: finishSpin 1s linear;
 }
 
 div.box-container {
